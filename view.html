@@ -9,11 +9,25 @@
     <script src="jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="bootstrap-4.4.1/dist/css/bootstrap.css">
     <script src="bootstrap-4.4.1/dist/js/bootstrap.js"></script>
+    <script src="js/_script.js"></script>
+    <style>
+        .select{
+            color: #fff;
+            background-color: #34ce57;
+        }
+    </style>
 </head>
 <body>
 <div class="w-100 d-flex justify-content-center align-items-center" style="height: 100vh">
-    <button class="btn btn-outline-success m-1" onclick="location.href='./search.html'">정원 안내</button>
-    <button class="btn btn-outline-success m-1" onclick="location.href='./view.html'">정원 전체</button>
+    <div class="d-flex flex-column h-50 list flex-wrap w-25 m-3">
+        <select name="garden" id="garden" class="custom-select">
+            <option class="removePlz">정원을 선택해주세요</option>
+        </select>
+        <div class="detail mt-5"></div>
+    </div>
+    <div class="map position-relative w-25 m-3">
+        <img src="./map/map.png" alt="" style="width: 500px;height: 450px;object-fit: cover">
+    </div>
 </div>
 </body>
 </html>
