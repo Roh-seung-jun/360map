@@ -71,7 +71,6 @@ function changeCho(key){
         res += code >= 0 ? choArr[code] : key[i];
     }
     return res;
-
 }
 
 function clickTag(){
