@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.css">
+    <script src="jquery-3.6.0.js"></script>
+    <script src="jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+    <script src="bootstrap-4.3.1-dist/js/bootstrap.js"></script>
+    <script>
+        $(()=>{
+            if(!localStorage.user){
+                localStorage.user = [];
+            }
+            $(document)
+            .on('click','.submit',apply)
+
+            let code = Math.random().toString(36).substring(2, 6);
+            $('#number').val(code);
+        })
+
+        function apply(){
+            let number = $('#number').val(),
+                writer = $('#writer').val(),
+                start_date = $('#start_date').val(),
+                end_date = $('#end_date').val(),
+                money = $('#money').val();
+
+            if(!number || !writer || !start_date || !end_date || !money)return alert('필수값이 누락되었습니다.');
+
+            let arr = [];
+            if(localStorage.user){
+                arr = JSON.parse(localStorage.user);
+            }
+
+            arr.push({
+                number,
+                writer,
+                start_date,
+                end_date,
+                money,
+                'join' : 0
+            })
+
+            localStorage.user = JSON.stringify(arr);
+
+
+        }
+    </script>
+</head>
+<body style="height: 100vh">
+    <div class="d-flex align-items-center flex-column justify-content-center w-100 h-100">
+        <div class="form-group">
+            <p class="m-0">투자번호</p>
+            <input type="text" class="form-control" id="number" readonly>
+        </div>
+        <div class="form-group">
+            <p class="m-0">청년작가 이름</p>
+            <input type="text" class="form-control" id="writer">
+        </div>
+        <div class="form-group">
+            <p class="m-0">시작일</p>
+            <input type="date" class="form-control" id="start_date">
+        </div>
+        <div class="form-group">
+            <p class="m-0">종료일</p>
+            <input type="date" class="form-control" id="end_date">
+        </div>
+        <div class="form-group">
+            <p class="m-0">모집금액</p>
+            <input type="number" class="form-control" id="money">
+        </div>
+        <button class="btn btn-outline-primary submit">등록</button>
+    </div>
+</body>
+</html>
+
